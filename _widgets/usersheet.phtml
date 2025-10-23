@@ -1,0 +1,56 @@
+
+!read themes/_widgets/user_varsheet.phtml
+
+!if $n>0
+ <!-- _widgets/usersheet.phtml -->
+ <table class="wims_user_sheet_table">
+  !for i=1 to $n
+   !set se=!item $i of $aclist
+   !distribute lines $(s_$se) into ac,t_,ti,de
+   <tr class="wims_user_sheet">
+    <td class="wims_user_sheet_type">$wims_name_Sheet $se. </td>
+    <td class="wims_user_sheet_desc">
+     !href module=adm/sheet&sh=$se $ti
+    </td>
+    <td class="wims_user_sheet_expire">
+     !if $ac>=2
+      $U_expired
+     !else
+      !if showshexpire iswordof $class_option
+       !read misc/expire.phtml.$lang $t_
+      !endif
+     !endif
+    </td>
+    !set pe=!line $se of $percents
+    !distribute words $pe into p1,p2,p3,p4
+    <td class="wims_user_sheet_score">
+     !if $p1!=$empty
+        !distribute item $[$p1/100],$[$p2/10],$[$p3/100],$[$p4/100] into x0_,y_,x1_,x2_
+        !set ff_$se=!mathsubst Q=$y_ in $(f_$se)
+        !for sev=0 to 2
+          !set ff_$se=!mathsubst I$sev=$(x$(sev)_) in $(ff_$se)
+        !next
+        !read adm/class/colors $[ceil(10*$(ff_$se))],color
+        !default scoremax=10
+        <span style=$style_note>
+        $(wims_name_thsheet[9]): $[ceil(10*$scoremax*$(ff_$se))/10]/$scoremax
+        </span>
+!!      $(wims_name_thsheet[7]): $[$p2]/10,
+!!      I0 $(wims_name_thsheet[5]): $p1%,
+!!      I1 $(wims_name_thsheet[10]): $p3%,
+!!      I2 $(wims_name_thsheet[13]): $[$p4/10]/10
+     !else
+      &nbsp;
+     !endif
+    </td><td>
+     !if showshweight iswordof $class_option
+      ($wims_name_coeff
+      !line $i of $wlist
+      )
+     !endif
+    </td>
+   </tr>
+  !next i
+ </table>
+ <!-- end _widgets/usersheet.phtml -->
+!endif

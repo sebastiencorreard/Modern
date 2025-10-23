@@ -1,0 +1,20 @@
+<!-- _widgets/supervisorsexam.phtml -->
+!for i=1 to $examcnt
+ !set sh=!record $i of wimshome/log/classes/$wims_class/exams/.exams
+ !distribute lines $sh into ac,t_,d_,ti
+ $table_tr
+  <td>$wims_name_Examen $i</td>
+  <td>
+    !href module=adm/class/exam&exam=$i $ti
+  </td>
+  !if $seq_open=yes
+    !read themes/_procs/supervisorseq.proc exam,$ac
+  !endif
+  <td>$(wims_name_shstatus[$[$ac+1]])</td>
+  <td>
+   !read adm/sheet/sheetaction.phtml exam,$i,$ac,1
+  </td>
+ </tr>
+!next i
+!reset exocnt_
+<!-- end _widgets/supervisorsexam.phtml -->

@@ -1,0 +1,76 @@
+/* CSSTidy 1.3: Mon, 14 Oct 2013 03:07:45 -0500 */
+table.wimstable {
+border-collapse:collapse;
+margin-left:auto;
+margin-right:auto;
+border:1px solid #999;
+font-size:.9em;
+}
+
+table.wimstable caption {
+font-weight:700;
+font-size:1.1em;
+border:1px solid #999;
+padding:3px;
+}
+
+table.wimstable th {
+border-collapse:collapse;
+border:1px solid #999;
+color:#FFF;
+padding:3px 0;
+}
+
+table.wimstable .even td {
+  color:#000;
+  background-color:#DFDFDF;
+  border:1px solid #999;
+  padding:2px;
+}
+
+table.wimstable th a {
+display:inline-block;
+text-decoration:none;
+padding:2px;
+}
+
+table.wimscenter {
+margin-left:auto;
+margin-right:auto;
+}
+
+table.wimstable a:hover {
+text-decoration:none;
+color:red;
+cursor:pointer;
+}
+
+table.wims_user_table {
+margin-left:2%;
+border-bottom:1px solid gray;
+overflow:scroll;
+border-spacing:0;
+padding:5pt;
+}
+
+table.wims_user_sheet_table {
+width:90%;
+margin-left:5%;
+overflow:scroll;
+margin-right:auto;
+padding:5pt;
+}
+
+table.wims_user_exam_table {
+background-color:#DFDFDF;
+margin-left:5%;
+overflow:scroll;
+margin-right:auto;
+padding:5pt;
+}
+
+
+table.wimstable td,table.wimstable .odd td {
+border:1px solid #999;
+padding:3px;
+}

@@ -1,0 +1,49 @@
+!set wims_theme_doctail=yes
+!if $wims_class=$empty and $wims_developer=$empty
+  !set oneitem=oneitem.phtml
+!else
+  !set oneitem=./adm/oneitem.phtml
+!endif
+<br class="clearall">
+<!--begin of doctail.phtml-->
+ </div><!--end of wimsbody-->
+</div><!--end of wimspagebox-->
+!read themes/_widgets/topback.phtml
+!if $slib_geogebra_exists=yes
+  !read themes/_widgets/tailgeogebra.phtml
+!endif
+!if $wims_lightpopup=yes
+   !read themes/_widgets/lightpopup.phtml
+   <br class="clearall spacer">
+   </div> <!-- end of wimsbodybox-->
+ </div> <!-- end of wimslightpopup-->
+</div> <!-- end of wimsdoc-->
+  !exit
+!endif
+
+!if $job=read
+ !if ($wims_class!=$empty and $wims_user!=supervisor)
+   <br class="clearall spacer">
+ </div><!-- end of wimsbodybox-->
+</div><!--end of wimsdoc-->
+ !exit
+ !endif
+!endif
+
+!if help notin $wims_session
+ !!!read themes/_widgets/menumodubox.phtml
+ !read themes/_widgets/docmenumodubox.phtml
+!endif
+
+!read themes/_widgets/docmenubox.phtml
+
+ <br class="clearall spacer">
+
+</div><!-- end ofwimsbodybox-->
+
+!read themes/_widgets/doctailbox.phtml
+
+!if $job iswordof read print
+ </div><!--end of wimsdoc-->
+!endif
+<!-- end of doctail.phtml-->

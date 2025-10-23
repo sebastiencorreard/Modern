@@ -1,0 +1,30 @@
+
+!read themes/_widgets/user_varexam.phtml
+
+!if $m>0
+ <!-- _widgets/userexam.phtml -->
+ <table class="wims_user_exam_table">
+  !for i=1 to $m
+   !set se=!item $i of $aelist
+   !distribute lines $(e_$se) into ac,t_,s_,ti,de
+   <tr class="wims_user_exam">
+    <td class="wims_user_exam_type">$wims_name_Examen $se.</td>
+    <td class="wims_user_exam_desc">
+     !href module=adm/class/exam&job=student&exam=$se $ti
+    </td>
+    <td class="wims_user_exam_expire">
+     !if $ac>=2
+      $U_expired
+     !else
+      !if showexexpire iswordof $class_option
+       !read misc/expire.phtml.$lang $t_
+      !else
+       &nbsp;
+      !endif
+     !endif
+    </td>
+   </tr>
+  !next i
+ </table>
+ <!-- end _widgets/userexam.phtml -->
+!endif

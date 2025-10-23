@@ -1,0 +1,93 @@
+/** default/_css - forms.css */
+/**  Somes styles designed to display fields in forms, tableless **/
+
+
+/* this is generaly a fieldset class */
+.property_fields{
+    margin-top:1em;
+    margin-bottom:1em;
+    max-width:900px;
+    padding:0.5em 0;
+}
+
+.property_fields .field {
+	margin: 0;
+}
+
+.property_fields .actions{
+    padding:0.5em;
+    margin-top:0.5em;
+}
+
+.property_fields .box{
+    padding: 1em 0.4em; /*0.4em seems max for Chrome 2-columns layout */
+    border:1px solid #CFCFCF;
+}
+
+.box div, .box input, .box textarea, .box select{
+    margin-left:1em;
+}
+
+.fullwidth{
+    /*width:100%;*/
+    clear: both;
+}
+
+.halfwidth{
+    width:48%;
+    min-width: 380px;
+    /*float: left;*/
+    vertical-align: top;
+}
+.property_fields .halfwidth{
+    display: inline-block;
+    min-height:4.5em;
+}
+
+.property_fields .field:nth-child(even){
+  background-color: #DFDFDF;
+}
+
+.property_fields .field:nth-child(odd){
+  background-color: #EFEFEF;
+}
+
+.formHelp{
+    font-size: 9pt;
+    color:#666;
+}
+
+.property_fields legend{
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 0.5em;
+    margin-left:1em;
+    border:1px solid #BBB;
+}
+
+.property_fields label{
+    font-weight:bold;
+    min-width:10em;
+}
+.halfwidth label{
+    width:100%;
+}
+
+.fullwidth input[type="text"], .fullwidth textarea{
+    width:95%;
+}
+
+.field input[type="text"]{
+    min-width:40%;
+}
+input[type="color"]{
+    vertical-align: bottom;
+}
+
+.field textarea{
+    width:80%;
+}
+
+.wims_formradio label {
+    min-width:0;
+}

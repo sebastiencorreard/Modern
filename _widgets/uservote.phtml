@@ -1,0 +1,35 @@
+
+!set t=!recordcnt wimshome/log/classes/$wims_class/vote/.votes
+!set avlist=
+!for i=1 to $t
+ !set v_$i=!record $i of wimshome/log/classes/$wims_class/vote/.votes
+ !set a_=!line 1 of $(v_$i)
+ !if $a_>=1 and $a_<=2
+  !set avlist=!append item $i to $avlist
+ !endif
+!next i
+!set v=!itemcnt $avlist
+
+!if $v>0
+ <!-- _widgets/uservote.phtml -->
+ <table class="wims_user_vote_table">
+  !for i=1 to $v
+   !set sv=!item $i of $avlist
+   !distribute lines $(v_$sv) into ac,ti
+   <tr class="wims_user_vote">
+    <td class="wims_user_vote_type">$wims_name_Vote $i</td>
+    <td class="wims_user_vote_desc">
+     !href module=adm/vote&job=read&vote=$sv $ti
+    </td>
+    <td class="wims_user_vote_expire">
+     !if $ac>=2
+      $U_expired
+     !else
+      &nbsp;
+     !endif
+    </td>
+   </tr>
+  !next i
+ </table>
+ <!-- end _widgets/uservote.phtml -->
+!endif

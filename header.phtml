@@ -1,0 +1,72 @@
+<!-- begin of default/header.phtml -->
+
+!! Header menu bar definition.
+!nocache
+!set wims_theme_header=yes
+!set jquery_defined=no
+
+!default wims_theme_icon=$class_theme_icon
+!default wims_theme_icon=standard
+!if _help isin $wims_session
+  <div id="wimsmhelp">
+!endif
+
+!if _exam isin $wims_session
+  <div id="wimsexam">
+!endif
+
+!if $wims_lightpopup=yes
+  <div id="wimslightpopup">
+   <link rel="stylesheet" href="html/themes/_css/light.css" type="text/css">
+!endif
+
+!set wims_theme_version=1
+!set current_module=!replace / by , in $module
+!set module_path= !item 1 of $current_module
+!set wims_hm=$wims_hm\
+$wims_home_items\
+$wims_link_close\
+$wims_ariane
+
+!set  wims_hm_cnt=!linecnt $wims_hm
+
+!if $wims_hm_cnt!=0 or ($module_path notitemof home,adm,classes and _exam notin $session and $module_init_parm == $empty)
+ <div id="wimstopbox">
+
+  <div class="wimsmenu">
+    !for i_=1 to $wims_hm_cnt
+      <span class="menuitem">
+        !set 1_=!line $i_ of $wims_hm
+        !read oneitem.phtml $1_
+      </span>
+    !next i_
+    !distribute items div,span into div0,div1
+    !read themes/_widgets/permalink.phtml
+
+    !!## technical parameters
+    !if $class_cas_auth=$empty
+      !set m_init_parm=!replace internal & by $ $ in $module_init_parm
+      !set class_cas_auth=!getopt class_auth in $m_init_parm
+    !endif
+    !if $class_cas_auth!=$empty
+      !!## it is better that the cas logout appears too much ...
+      !!## can be useless in the case of a supervisor so the next line is commented
+      !!!!!!and $wims_user!=supervisor and ($wims_realuser=$empty or $wims_realuser!=supervisor)
+      <div class="menuitem">
+        !read adm/class/logout_cas
+      </div>
+    !endif
+  </div><!--wimsmenu-->
+</div><!--wimstopbox-->
+!endif
+
+!read themes/_widgets/ariane.phtml
+
+!if $module!=home or $wims_user!=
+  <div id="wimsbodybox">
+    <div id="wimspagebox">
+!endif
+
+!read themes/_widgets/alertchat.phtml
+
+<!-- end of default/header.phtml -->

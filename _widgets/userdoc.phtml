@@ -1,0 +1,27 @@
+!set dcnt=!recordcnt wimshome/log/classes/$wims_class/doc/.index
+!for i=1 to $dcnt
+ !set d_=!record $i of wimshome/log/classes/$wims_class/doc/.index
+ !distribute lines $d_ into s_,t_,a_,e_,c_,o_
+ !if $o_>0
+  !set ds_list=!append line $s_ to $ds_list
+  !set dt_list=!append line $t_ to $dt_list
+ !endif
+!next i
+!set dcnt=!linecnt $ds_list
+
+!if $dcnt>0
+ <!-- _widgets/userdoc.phtml -->
+ <table class="wims_user_doc_table">
+  !for i=1 to $dcnt
+   !set s_=!line $i of $ds_list
+   !set t_=!line $i of $dt_list
+   <tr class="wims_user_doc">
+    <td class="wims_user_doc_type">$wims_name_doc</td>
+    <td colspan="3">
+     !href module=adm/doc&job=read&doc=$s_&block=main $t_
+    </td>
+   </tr>
+  !next i
+ </table>
+ <!-- end _widgets/userdoc.phtml -->
+!endif

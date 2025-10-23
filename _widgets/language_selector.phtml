@@ -1,0 +1,21 @@
+!! wims_language_cnt was lost somewhere in 4.11...
+
+!readproc languages
+<!-- $wims_theme/_widgets/language_selector.phtml -->
+!for i=1 to $wims_language_cnt
+ !set l=!word $i of $wims_site_languages
+ !if $l!=$lang
+  !if $wims_language_cnt>2 and $wims_language_cnt<6
+   !set l_=<small>$(lang_name_$l)</small>
+  !else
+   !if $wims_language_cnt<6
+    !set l_=$(lang_name_$l)
+   !else
+    !reset l_
+   !endif
+  !endif
+  !href lang=$l&session=$wims_session.1&module=$module <img src="gifs/$l.gif" alt="$(Lang_name_$l)" height="16">$l_
+   <!-- don't remove this empty line or leading whitespace. Flag spacing depends on it. -->
+ !endif
+!next i
+<!-- end $wims_theme/_widgets/language_selector.phtml -->

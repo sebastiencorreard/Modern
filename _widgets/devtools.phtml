@@ -1,0 +1,16 @@
+<!-- $wims_theme/_widgets/devtools.phtml -->
+!set wims_show_stat=!tolower $wims_show_stat
+!if yes isin $wims_show_stat
+ !set span=4
+!else
+ !set span=2
+!endif
+
+<td wrap="nowrap" colspan="$span">
+<small>$CR_1
+!href module=adm/createxo $CR_OEF
+ $wims_name_or
+!href module=adm/modtool $CR_mod
+</small>
+</td>
+<!-- end $wims_theme/_widgets/devtools.phtml -->

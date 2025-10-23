@@ -1,0 +1,45 @@
+<!-- begin of $wims_theme/tail.phtml -->
+!! Tail menu theme.
+!nocache
+!set wims_theme_tail=yes
+
+!distribute items div,div into div0,div1
+!read themes/_widgets/menumodubox.phtml
+!reset div0 div1
+
+<hr style="width:35%">
+
+!if $slib_geogebra_exists=yes
+ !read themes/_widgets/tailgeogebra.phtml
+!endif
+!if $wims_homeref_special!=$empty
+<div class="wimscenter wimstail small">
+ $wims_homeref_special
+ </div>
+ !exit
+!endif
+
+<table class="wimscenter wimstail" style="background-color:$wims_homeref_bgcolor;">
+<tr>
+!for i_=1 to $wims_homeref_n1
+ <td class="small">
+ !set 1_=!line $i_ of $wims_rm_1
+ !read oneitem.phtml $1_
+ </td>
+!next i_
+</tr>
+!for i_=1 to $wims_homeref_n4
+ <tr><td colspan="$wims_homeref_n1" class="small">
+ !set 1_=!line $i_ of $wims_rm_4
+ !read oneitem.phtml $1_
+ </td></tr>
+!next i_
+!for i_=1 to $wims_homeref_n2
+ <tr><td colspan="$wims_homeref_n1" class="small">
+ !set 1_=!line $i_ of $wims_rm_2
+ !read oneitem.phtml $1_
+ </td></tr>
+!next i_
+
+</table>
+</div>

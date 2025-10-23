@@ -1,0 +1,16 @@
+!distribute item $wims_ref_bgcolor,$wims_ref_bgcolor,#DCDCDC,#FCFCF0,\
+	0,1,3\
+	into\
+	table_scolor,table_bgcolor,table_color1,table_color2,\
+	table_border,table_cellspacing,table_cellpadding
+
+!set wims_incremental=1
+!set table_center=center
+!set table_header=!nosubst <table style="background-color:$wims_ref_bgcolor"\
+	class="wimstable wimscenter" id="$table_id">
+!set table_end=!nosubst </table>
+!set table_hdtr=!nosubst <tr style="background-color:$table_bgcolor" data-sort-method="thead">
+!set table_colors=$table_color1,$table_color2
+!set table_tr=!nosubst <tr style="background-color:$(table_colors[$wims_incremental%2+1])">
+
+!reset table_spacer,table_class,table_id

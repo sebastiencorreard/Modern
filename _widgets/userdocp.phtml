@@ -1,0 +1,30 @@
+!set dpcnt=!recordcnt wimshome/log/classes/$wims_class/doc/.docindex
+!for i=1 to $dpcnt
+ !set d__=!record $i of wimshome/log/classes/$wims_class/doc/.docindex
+ !distribute lines $d__ into s_,t_,ti_,de_,o_
+ !if $o_>0
+  !set dps_list=!append line $s_ to $dps_list
+  !set dpt_list=!append line $t_ to $dpt_list
+  !set dpti_list=!append line $ti_ to $dpti_list
+  !set dpde_list=!append line $de_ to $dpde_list
+ !endif
+!next i
+!set dpcnt=!linecnt $dps_list
+
+!if $dpcnt>0
+ <!-- _widgets/userdocp.phtml -->
+ <table class="wims_user_docp_table">
+  !for i=1 to $dpcnt
+   !set s_=!line $i of $dps_list
+   !set t_=!line $i of $dpt_list
+   !set w_=!line $i of $dpw_list
+   <tr class="wims_user_docp">
+    <td class="wims_user_doc_type">$wims_name_doc</td>
+    <td colspan="3">
+     !href module=$s_&$t_&wksheet=$w_ $(dpti_list[$i;])
+    </td>
+   </tr>
+  !next i
+ </table>
+ <!-- end _widgets/userdocp.phtml -->
+!endif

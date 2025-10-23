@@ -1,0 +1,13 @@
+<td wrap="nowrap">
+ <small>
+ !href module=adm/light&phtml=download.phtml.$lang $wims_name_download
+ </small>
+ !if yes isin $wims_show_stat
+  <td wrap="nowrap"><small>
+  !href module=adm/stat/referer $wims_name_ref
+  </small>
+  <td wrap="nowrap"><small>
+  !href module=adm/stat/stat $wims_name_stat
+  </small>
+ !endif
+</td>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+!set wims_theme_mhelpheader=yes
+!default modtitle=$(module_title_$lang)
+!default modtitle=$module_title
+<!-- begin of mhelpheader.phtml -->
+<html lang="$module_language"><head>
+!read name.phtml.$module_language
+!if $special_parm=about
+  !set wname_h=$wims_name_about
+!else
+  !set wname_h=$wims_name_help
+!endif
+!set module_title2=$wname_h : $modtitle
+!read adm/css.phtml
+$wims_html_header
+!headmathjax
+</head>
+
+<body $wims_htmlbody onload="window.focus();window.moveTo(150,120);window.resizeTo(700,600);">
+<div id="wimsmhelp">
+<div class="wimsbody wimscenter">
+  <h1>$modtitle</h1>
+----- $wname_h <span class="small">[<a href="#" onclick="window.close();">$wims_name_back2</a>]</span> -----
+</div>
+
+<!-- end of mhelpheader.phtml -->

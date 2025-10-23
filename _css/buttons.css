@@ -1,0 +1,29 @@
+.wims_button,
+.wims_button a,
+input[type="button"],
+input[type="submit"],
+.wims_button_help {
+border-width: 1px;
+border-style: solid;
+padding:3px;
+text-decoration:none;
+background-color:rgb(240, 240, 240);
+font-family: sans-serif;
+line-height:normal;
+}
+
+.wims_button a:hover,
+.wims_button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover ,
+.wims_button_help:hover,
+.wims_button.wims_secondary_button:hover {
+cursor:pointer;
+border-color:transparent;
+text-decoration:none;
+}
+
+.wims_button.wims_secondary_button{
+  color:#666;
+  border-color: #666;
+}

@@ -1,0 +1,21 @@
+/** default/_css - menumodubox.css */
+
+#wimsmenumodubox{
+  margin:1em 0;
+  padding:.5em 1em;
+  overflow: auto;
+  text-align: center;
+}
+
+#wimsmenumodubox>.wimsmenu{
+  display:inline-block;
+}
+
+#wimsmenumodubox>h2{
+  margin: .5em 0 0 0;
+}
+
+#wimsmenumodubox .menuitem{
+  display:inline-block;
+  margin-right: 1em;
+}

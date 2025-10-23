@@ -1,0 +1,474 @@
+// ============================================
+// WIMS Modern Theme - Main SCSS Entry Point
+// ============================================
+
+// 1. Use variables and mixins (modern Sass syntax)
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// 2. BASE STYLES
+// ============================================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.main_body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $gray-900;
+  background-color: var(--wims_bgcolor, $body-bg);
+}
+
+// ============================================
+// 3. TYPOGRAPHY
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading-base;
+}
+
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+p {
+  margin-top: 0;
+  margin-bottom: $spacing-4;
+}
+
+a {
+  color: var(--wims_link_color, $link-color);
+  text-decoration: none;
+  transition: color $transition-speed-fast $transition-timing;
+
+  &:visited {
+    color: var(--wims_vlink_color, $link-visited);
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--wims_hlink_color, $link-hover);
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $link-active;
+  }
+}
+
+// ============================================
+// 4. LAYOUT - TOP NAVIGATION
+// ============================================
+
+#wimstopbox {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  padding: $nav-padding;
+  box-shadow: $shadow-sm;
+
+  @include mobile-only {
+    padding: $spacing-2 $spacing-3;
+  }
+}
+
+#wimsmenubox,
+#wimsmenumodubox {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+}
+
+.wimsmenu {
+  @include flex-between;
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  gap: $gap-medium;
+
+  @include mobile-only {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $gap-small;
+  }
+
+  a {
+    color: var(--wims_ref_menucolor, $menu-color);
+    padding: $spacing-2 $spacing-3;
+    border-radius: $border-radius;
+    transition: $transition-base;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+      color: var(--wims_link_color, $primary-color);
+      text-decoration: none;
+    }
+  }
+
+  .wimstable {
+    a {
+      color: var(--wims_ref_menucolor, $menu-color);
+    }
+  }
+}
+
+// ============================================
+// 5. LAYOUT - MAIN CONTENT
+// ============================================
+
+#wimsbodybox {
+  min-height: calc(100vh - #{$nav-height} - #{$footer-padding * 2});
+}
+
+#wimspagebox {
+  @include container;
+  padding-top: $spacing-6;
+  padding-bottom: $spacing-6;
+
+  @include mobile-only {
+    padding-top: $spacing-4;
+    padding-bottom: $spacing-4;
+  }
+}
+
+// ============================================
+// 6. LAYOUT - FOOTER
+// ============================================
+
+.wimstail {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  padding: $footer-padding;
+  margin-top: $spacing-8;
+
+  a {
+    color: var(--wims_ref_menucolor, $menu-color);
+
+    &:hover {
+      color: var(--wims_link_color, $primary-color);
+    }
+  }
+}
+
+// ============================================
+// 7. BUTTONS
+// ============================================
+
+.wims_button,
+input[type="button"],
+input[type="submit"],
+button {
+  @include button-base;
+  color: var(--wims_ref_button_color, $btn-color);
+  background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+  border-color: var(--wims_ref_button_bgcolor, $btn-bg);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+  }
+
+  &:active:not(:disabled) {
+    filter: brightness(0.8);
+  }
+}
+
+a.wims_button {
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.wims_button_help,
+a.wims_button_help {
+  @include button-base;
+  color: var(--wims_ref_button_help_color, $btn-help-color);
+  background-color: var(--wims_ref_button_help_bgcolor, $btn-help-bg);
+  border-color: var(--wims_ref_button_help_bgcolor, $btn-help-bg);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+  }
+}
+
+// ============================================
+// 8. FORMS
+// ============================================
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  @include input-base;
+}
+
+label {
+  @include form-label;
+}
+
+fieldset {
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing-4;
+  margin-bottom: $spacing-4;
+
+  legend {
+    padding: 0 $spacing-2;
+    font-weight: $font-weight-semibold;
+    color: $gray-700;
+  }
+}
+
+// ============================================
+// 9. TABLES
+// ============================================
+
+table.wimstable {
+  @include table-base;
+
+  th,
+  caption {
+    background-color: var(--wims_ref_bgcolor, $menu-bg);
+    color: var(--wims_ref_menucolor, $menu-color);
+
+    a {
+      color: var(--wims_ref_menucolor, $menu-color);
+
+      &:hover {
+        color: var(--wims_link_color, $primary-color);
+      }
+    }
+  }
+
+  caption {
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    text-align: left;
+    font-weight: $font-weight-semibold;
+    border-bottom: $border-width solid $table-border-color;
+
+    a.wims_button {
+      @include button-base;
+      @include button-size($spacing-1, $spacing-3, $font-size-sm, $border-radius-sm);
+      color: var(--wims_ref_button_color, $btn-color);
+      background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+      border-color: var(--wims_ref_button_bgcolor, $btn-bg);
+    }
+  }
+
+  th a.wims_button {
+    @include button-base;
+    @include button-size($spacing-1, $spacing-3, $font-size-sm, $border-radius-sm);
+    color: var(--wims_ref_button_color, $btn-color);
+    background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+    border-color: var(--wims_ref_button_bgcolor, $btn-bg);
+  }
+}
+
+// ============================================
+// 10. MENU ITEMS & NAVIGATION
+// ============================================
+
+.menuitem {
+  a {
+    @include wims-menu-item;
+  }
+}
+
+.wimsmanager {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+
+  a {
+    color: var(--wims_ref_menucolor, $menu-color);
+
+    &:hover {
+      color: var(--wims_link_color, $primary-color);
+    }
+  }
+}
+
+// ============================================
+// 11. WIMS COLOR CLASSES
+// ============================================
+
+.wims_color1 {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  padding: $spacing-3;
+  border-radius: $border-radius;
+}
+
+.wims_color2 {
+  background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+  color: var(--wims_ref_button_color, $btn-color);
+  padding: $spacing-3;
+  border-radius: $border-radius;
+}
+
+.wims_color3 {
+  background-color: var(--wims_ref_button_help_bgcolor, $btn-help-bg);
+  color: var(--wims_ref_button_help_color, $btn-help-color);
+  padding: $spacing-3;
+  border-radius: $border-radius;
+}
+
+// ============================================
+// 12. SEQUENCES & TITLES
+// ============================================
+
+.wims_title_seq {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_menucolor, $menu-color);
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-4;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+}
+
+// ============================================
+// 13. CONTAINERS & SPECIAL ELEMENTS
+// ============================================
+
+.container {
+  @include container;
+
+  h4 {
+    background-color: var(--wims_ref_bgcolor, $menu-bg);
+    color: var(--wims_ref_button_color, $btn-color);
+    padding: $spacing-3 $spacing-4;
+    border-radius: $border-radius;
+    margin-bottom: $spacing-4;
+  }
+}
+
+#menu_pendant,
+#menu_html {
+  background-color: var(--wims_ref_bgcolor, $menu-bg);
+  color: var(--wims_ref_button_color, $btn-color);
+  padding: $spacing-3;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-3;
+}
+
+#menu_avant,
+#menu_apres {
+  background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+  color: var(--wims_ref_button_color, $btn-color);
+  padding: $spacing-3;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-3;
+}
+
+.infobulle {
+  background-color: var(--wims_ref_button_bgcolor, $btn-bg);
+  color: var(--wims_ref_button_color, $btn-color);
+  padding: $spacing-2 $spacing-3;
+  border-radius: $border-radius;
+  font-size: $font-size-sm;
+  box-shadow: $shadow-md;
+}
+
+// ============================================
+// 14. UTILITY CLASSES
+// ============================================
+
+// Spacing utilities
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-6 { margin-top: $spacing-6; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-6 { margin-bottom: $spacing-6; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: $spacing-1; }
+.p-2 { padding: $spacing-2; }
+.p-3 { padding: $spacing-3; }
+.p-4 { padding: $spacing-4; }
+.p-6 { padding: $spacing-6; }
+
+// Text utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-bold { font-weight: $font-weight-bold; }
+.text-semibold { font-weight: $font-weight-semibold; }
+.text-normal { font-weight: $font-weight-normal; }
+
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+
+// Display utilities
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+
+// Float utilities (for legacy support)
+.float_left {
+  float: left;
+  margin-right: $spacing-4;
+}
+
+.float_right {
+  float: right;
+  margin-left: $spacing-4;
+}
+
+// ============================================
+// 15. PRINT STYLES
+// ============================================
+
+@media print {
+  #wimstopbox,
+  .wimsmenu,
+  .wimstail,
+  .wims_button,
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black;
+  }
+}

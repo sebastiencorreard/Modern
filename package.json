@@ -1,0 +1,28 @@
+{
+  "name": "wims-modern-theme",
+  "version": "1.0.0",
+  "description": "Modern theme for WIMS - Web Interactive Multipurpose Server",
+  "main": "css.css",
+  "scripts": {
+    "watch": "sass --watch scss/main.scss:css.css --style expanded",
+    "build": "sass scss/main.scss:css.css --style expanded",
+    "build:prod": "sass scss/main.scss:css.css --style compressed --no-source-map",
+    "dev": "npm run watch"
+  },
+  "keywords": [
+    "wims",
+    "theme",
+    "scss",
+    "css",
+    "education"
+  ],
+  "author": "Sebastien Correard",
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "sass": "^1.70.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastiencorreard/Modern.git"
+  }
+}

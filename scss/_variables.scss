@@ -1,0 +1,251 @@
+// ============================================
+// WIMS Modern Theme - Variables
+// ============================================
+
+// ============================================
+// 1. MODERN THEME - Base Color Palette
+// ============================================
+// These are the default colors - they will be overridden by WIMS custom properties when available
+
+// Primary colors
+$primary-color: #007bff;
+$primary-hover: #0056b3;
+$primary-active: #004085;
+
+// Secondary colors
+$secondary-color: #6c757d;
+$secondary-hover: #5a6268;
+$secondary-active: #494f54;
+
+// Semantic colors
+$success-color: #28a745;
+$info-color: #17a2b8;
+$warning-color: #ffc107;
+$danger-color: #dc3545;
+
+// Neutral colors
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Background colors (fallback values)
+$body-bg: #f5f5f5;
+$content-bg: $white;
+$menu-bg: #e9ecef;
+$menu-color: #333333;
+
+// Link colors (fallback values)
+$link-color: #007bff;
+$link-visited: #551a8b;
+$link-hover: #0056b3;
+$link-active: $primary-active;
+
+// Button colors (fallback values)
+$btn-color: #ffffff;
+$btn-bg: #007bff;
+$btn-help-bg: #17a2b8;
+$btn-help-color: #ffffff;
+
+// ============================================
+// 3. SPACING SYSTEM
+// ============================================
+
+$spacing-unit: 8px;
+
+// Spacing scale (based on 8px unit)
+$spacing-0: 0;
+$spacing-1: $spacing-unit * 0.5;  // 4px
+$spacing-2: $spacing-unit;        // 8px
+$spacing-3: $spacing-unit * 1.5;  // 12px
+$spacing-4: $spacing-unit * 2;    // 16px
+$spacing-5: $spacing-unit * 2.5;  // 20px
+$spacing-6: $spacing-unit * 3;    // 24px
+$spacing-7: $spacing-unit * 3.5;  // 28px
+$spacing-8: $spacing-unit * 4;    // 32px
+$spacing-10: $spacing-unit * 5;   // 40px
+$spacing-12: $spacing-unit * 6;   // 48px
+$spacing-16: $spacing-unit * 8;   // 64px
+
+// Semantic spacing
+$padding-small: $spacing-2;
+$padding-medium: $spacing-4;
+$padding-large: $spacing-6;
+
+$margin-small: $spacing-2;
+$margin-medium: $spacing-4;
+$margin-large: $spacing-6;
+
+$gap-small: $spacing-2;
+$gap-medium: $spacing-4;
+$gap-large: $spacing-6;
+
+// ============================================
+// 4. TYPOGRAPHY
+// ============================================
+
+// Font families
+$font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+                   "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$font-family-base: $font-family-sans;
+
+// Font sizes
+$font-size-base: 16px;
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-md: 1rem;      // 16px
+$font-size-lg: 1.125rem;  // 18px
+$font-size-xl: 1.25rem;   // 20px
+$font-size-2xl: 1.5rem;   // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem;  // 36px
+
+// Line heights
+$line-height-base: 1.5;
+$line-height-tight: 1.25;
+$line-height-relaxed: 1.75;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Headings
+$h1-font-size: $font-size-4xl;
+$h2-font-size: $font-size-3xl;
+$h3-font-size: $font-size-2xl;
+$h4-font-size: $font-size-xl;
+$h5-font-size: $font-size-lg;
+$h6-font-size: $font-size-md;
+
+$heading-font-weight: $font-weight-semibold;
+$heading-line-height: $line-height-tight;
+$heading-margin-bottom: $spacing-4;
+
+// ============================================
+// 5. BORDERS & RADIUS
+// ============================================
+
+$border-width: 1px;
+$border-width-thick: 2px;
+$border-color: $gray-300;
+$border-color-dark: $gray-400;
+
+$border-radius-sm: 2px;
+$border-radius: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+$border-radius-pill: 50rem;
+$border-radius-circle: 50%;
+
+// ============================================
+// 6. SHADOWS
+// ============================================
+
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// ============================================
+// 7. Z-INDEX SCALE
+// ============================================
+
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ============================================
+// 8. TRANSITIONS & ANIMATIONS
+// ============================================
+
+$transition-speed-fast: 150ms;
+$transition-speed-base: 250ms;
+$transition-speed-slow: 350ms;
+
+$transition-timing: ease-in-out;
+
+$transition-base: all $transition-speed-base $transition-timing;
+$transition-fade: opacity $transition-speed-base $transition-timing;
+$transition-collapse: height $transition-speed-base $transition-timing;
+
+// ============================================
+// 9. BREAKPOINTS (Responsive)
+// ============================================
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Container max widths
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-xxl: 1320px;
+
+// ============================================
+// 10. COMPONENT-SPECIFIC VARIABLES
+// ============================================
+
+// Buttons
+$btn-padding-y: $spacing-2;
+$btn-padding-x: $spacing-4;
+$btn-border-radius: $border-radius;
+$btn-font-weight: $font-weight-medium;
+$btn-transition: $transition-base;
+
+// Forms
+$input-padding-y: $spacing-2;
+$input-padding-x: $spacing-3;
+$input-border-radius: $border-radius;
+$input-border-color: $border-color;
+$input-focus-border-color: $primary-color;
+$input-bg: $white;
+
+// Tables
+$table-cell-padding-y: $spacing-3;
+$table-cell-padding-x: $spacing-4;
+$table-header-bg: $menu-bg;
+$table-header-color: $menu-color;
+$table-border-color: $border-color;
+
+// Cards
+$card-padding: $spacing-4;
+$card-border-radius: $border-radius-md;
+$card-bg: $white;
+$card-shadow: $shadow;
+
+// Navigation
+$nav-height: 60px;
+$nav-padding: $spacing-4;
+$nav-bg: $menu-bg;
+$nav-color: $menu-color;
+
+// Footer
+$footer-bg: $menu-bg;
+$footer-color: $menu-color;
+$footer-padding: $spacing-6;
